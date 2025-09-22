@@ -74,23 +74,25 @@ To see the library paths, issue  `.libPaths()`  command from within R:
 Users can install python packages(via pip) to their home directory. This creates a "site-packages" directory within the user's home directory.
 ```
 $ module load python_3
-$ pip3 install --user <package.name>
+$ python -m pip install --user <package.name>
 ```
 
 By default the packages for python 3.3 and above are stored in ~/.local/lib/python<version>/site-packages
 
-If users intend to share the python environment with users working on the same project (or to install packages in a non-standard location), using **virtualenv** is a much better way to deal with managing python packages.
+However, installing packages in the default user location is **discouraged**, as it may lead to conflicts when working with multiple Python environments.
+
+A better approach, especially when working on shared projects or installing packages in non-standard locations, is to use a virtual environment.
 
 After loading the python module, create a virtual environment by:
 ```
-$ python3 -m venv <path/to/the/project/directory/name.of.the.project>
+$ python -m venv <path/to/the/project/directory/name.of.the.project>
 ```
 
 Note that this virtual environment starts clean without using any global python site-packages that are already installed. Use  **`--system-site-packages`**  if you want to use global site-packages.
 
 This creates a directory in your current project directory. This example below shows a virtualenv "virt_test" being created and activated.
 ```
-$ python3 -m venv virt_test
+$ python -m venv virt_test
 $ source virt_test/bin/activate
 (virt_test) $ pip3 list
 Package    Version
