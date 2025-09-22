@@ -40,7 +40,7 @@ cd <path/to/the/project/directory>
 ```
 and create a ".Renviron" file containing the following line:
 
-`R_LIBS_USER=<path/to/the/project/directory>/R_packages/`
+`R_LIBS_USER=<path/to/the/project/directory>/R_packages/%v`
 
 Then when R is started from the directory `<path/to/the/project/directory>`, the R packages for the given version of R will be saved in the above location.
 
