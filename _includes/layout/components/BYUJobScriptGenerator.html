@@ -425,6 +425,8 @@ BYUScriptGen.prototype.retrieveValues = function() {
         jobnotes.push("WARNING: this job can run on a standard compute node(s). Consider using compute node type \"standard\"");
     if (this.values.walltime_in_seconds <= 0)
         jobnotes.push("ERROR: walltime limit must be > 00:00:00");
+    if (!this.values.account)
+        jobnotes.push("ERROR: account must be specified");
 
     // rudimentary email validation
     // source: http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
