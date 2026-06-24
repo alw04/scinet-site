@@ -89,6 +89,28 @@ Also note that once you click on the "Launch" button and a new session starts, r
 
 For tips and tricks refer to the [previous section](#rstudio-server-on-ceres) and to the RStudio Tutorial at [https://www.dataquest.io/blog/tutorial-getting-started-with-r-and-rstudio/#tve-jump-173bb2584fe](https://www.dataquest.io/blog/tutorial-getting-started-with-r-and-rstudio/#tve-jump-173bb2584fe).
 
+### Troubleshooting: RStudio Session Fails to Start
+
+The Open OnDemand RStudio application stores RStudio session state and preferences in:
+
+```bash
+~/.ondemand/$USER
+```
+
+In some cases, particularly after an unexpected termination, files in this directory can prevent subsequent RStudio sessions from starting correctly.
+
+If this occurs, you may see an error similar to the one shown below when connecting to RStudio:
+
+![RStudio connection error after failed session recovery]({{ images_path }}/rstudio/RStudioConnectionError.png)
+
+To resolve this issue, remove the saved session state and start a new session:
+
+```bash
+rm -rf ~/.ondemand/$USER
+```
+
+This removes cached RStudio session state and preferences. Your project files, scripts, and data are not affected.
+
 ## RStudio Server through VPN or ssh tunnel
 
 To use RStudio Server on Ceres, a user submits a SLURM job script. A default job script that should suffice for most users is provided.
